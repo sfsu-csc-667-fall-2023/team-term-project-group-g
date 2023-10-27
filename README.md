@@ -4,9 +4,9 @@
 | Student      | Student Full Name |  Student SFSU Email   | GitHub Username |        Discord Username         |
 |    :---:     |       :---:       |         :---:         |      :---:      |             :---:               |
 |      #1      |     Alec Nagal    | anagal1@mail.sfsu.edu |    itsmeAlec    | aleccsucky/Alec Nagal(nickname) |
-|    #2        |       :---:       |         :---:         |      :---:      |             :---:               |
-|    #3        |       :---:       |         :---:         |      :---:      |             :---:               |
-|    #4        |       :---:       |         :---:         |      :---:      |             :---:               |
+|    #2        |   Douglas Cheung  |         :---:         |      :---:      |             :---:               |
+|    #3        |Vijayraj Tolnoorkar|         :---:         |      :---:      |             :---:               |
+|    #4        |    Lajja Shah     |         :---:         |      :---:      |             :---:               |
 
 
 |             Name of the Project               |                            URL of the Project                          | 
