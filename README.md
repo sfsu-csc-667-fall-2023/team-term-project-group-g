@@ -5,7 +5,7 @@
 |    :---:     |       :---:       |         :---:         |      :---:      |             :---:               |
 |      #1      |     Alec Nagal    | anagal1@mail.sfsu.edu |    itsmeAlec    | aleccsucky/Alec Nagal(nickname) |
 |    #2        |   Douglas Cheung  |         :---:         |      :---:      |             :---:               |
-|    #3        |Vijayraj Tolnoorkar|         :---:         |      :---:      |             :---:               |
+|    #3        |Vijayraj Tolnoorkar| vtolnoorkar@sfsu.edu  |    vijayt2001   | vj838/ Vijayraj Tolnoorkar      |
 |    #4        |    Lajja Shah     |         :---:         |      :---:      |             :---:               |
 
 
