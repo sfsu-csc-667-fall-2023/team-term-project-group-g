@@ -1,0 +1,19 @@
+.option-container {
+    width: 500px;
+    height: 50px;
+    background-color:  yellow;
+
+}
+
+.destroyer {
+    background-color: brown;
+
+}
+
+
+.destroyer-preview {
+    width: 20px;
+    height: 10px;
+    margin: 3px;
+
+}
