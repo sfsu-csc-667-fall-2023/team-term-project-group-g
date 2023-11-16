@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Battleship</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+    <button id="singlePlayerButton">Single Player</button>
+    <button id="multiPlayerButton">Multiplayer</button>
+
+    <div class="player p1">
+        Player 1
+        <div class="connected">Connected <span></span></div>
+        <div class="ready">Ready <span></span></div>
+    </div>
+
+    <div class="player p2">
+        Player 2
+        <div class="connected">Connected <span></span></div>
+        <div class="ready">Ready <span></span></div>
+    </div>
+
+    <div id="game-info">
+        <p>Turn: <span id="turn-display"></span></p>
+        <p>Info: <span id="info"></span></p>
+    </div>
+
+    <div id="gamesboard-container"></div>
+
+    <div class="option-container">
+        <div id="0" class="destroyer-preview destroyer" draggable="true"></div>
+        <div id="1" class="submarine-preview submarine" draggable="true"></div>
+        <div id="2" class="cruiser-preview cruiser" draggable="true"></div>
+        <div id="3" class="battleship-preview battleship" draggable="true"></div>
+        <div id="4" class="carrier-preview carrier" draggable="true"></div>
+    </div>
+
+    <button id="flip-button">FLIP</button>
+    <button id="start-button">START</button>
+    <button id="reset-button" style="display:none;">Reset Game</button>
+
+    <script src="app.js"> </script>
+
+
+    
+</body>
+</html>
