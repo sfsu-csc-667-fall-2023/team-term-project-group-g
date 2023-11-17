@@ -12,3 +12,18 @@
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
 |   BattleShip                                    |                                                   |  
+
+# How to run game (locally) setup
+1. open project folder
+2. open terminal in IDE
+3. run "npm init -y" in ternminal
+4. run "npm i express socket.io" in ternminal
+5. run "npm i --save-dev nodemon" in ternminal
+6. make sure in package.json
+    "main": "server.js"
+     "scripts": {
+   "start": "node server",
+   "dev": "nodemon server"
+
+# Run game (locally)
+1. npm run dev
