@@ -77,10 +77,10 @@ socket.on('check-players', players => {
     })
 })
 
-//     // On Timeout
-//     socket.on('timeout', () => {
-//       infoDisplay.innerHTML = 'You have reached the 10 minute limit'
-//     })
+// On Timeout
+socket.on('timeout', () => {
+    infoDisplay.innerHTML = 'You have reached the 10 minute limit'
+})
 
 // Ready button click
 startButton.addEventListener('click', () => {
@@ -351,13 +351,13 @@ function revealSquare(classList) {
     const enemySquare = computerGrid.querySelector(`div[data-id='${shotFired}']`)
     const obj = Object.values(classList)
     if (!enemySquare.classList.contains('boom') && currentPlayer === 'user' && !isGameOver) {
-    if (obj.classList.includes('destroyer')) destroyerCount++
-    if (obj.classList.includes('submarine')) submarineCount++
-    if (obj.classList.includes('cruiser')) cruiserCount++
-    if (obj.classList.includes('battleship')) battleshipCount++
-    if (obj.classList.includes('carrier')) carrierCount++
+    if (obj.includes('destroyer')) destroyerCount++
+    if (obj.includes('submarine')) submarineCount++
+    if (obj.includes('cruiser')) cruiserCount++
+    if (obj.includes('battleship')) battleshipCount++
+    if (obj.includes('carrier')) carrierCount++
     }
-    if (obj.classList.includes('taken')) {
+    if (obj.includes('taken')) {
         enemySquare.classList.add('boom')
     } else {
         enemySquare.classList.add('miss')
@@ -390,44 +390,46 @@ function enemyGo(square) {
 }
 
 function checkForWins() {
+    let enemy = 'computer'
+    if (gameMode === 'multiPlayer') enemy = 'enemy'
     if (destroyerCount === 2) {
-        infoDisplay.innerHTML = 'You sunk the computers destroyer'
+        infoDisplay.innerHTML = `You sunk the ${enemy}s destroyer`
         destroyerCount = 10
     }
     if (submarineCount === 3) {
-        infoDisplay.innerHTML = 'You sunk the computers submarine'
+        infoDisplay.innerHTML = `${enemy} sunk you submarine`
         submarineCount = 10
     }
     if (cruiserCount === 3) {
-        infoDisplay.innerHTML = 'You sunk the computers cruiser'
+        infoDisplay.innerHTML = `${enemy} sunk you cruiser`
         cruiserCount = 10
     }
     if (battleshipCount === 4) {
-        infoDisplay.innerHTML = 'You sunk the computers battleship'
+        infoDisplay.innerHTML = `${enemy} sunk you battleship`
         battleshipCount = 10
     }
     if (carrierCount === 5) {
-        infoDisplay.innerHTML = 'You sunk the computers carrier'
+        infoDisplay.innerHTML = `${enemy} sunk you carrier`
         carrierCount = 10
     }
     if (cpuDestroyerCount === 2) {
-        infoDisplay.innerHTML = 'You sunk the computers Destroyer'
+        infoDisplay.innerHTML = `${enemy} sunk you Destroyer`
         cpuDestroyerCount = 10
     }
     if (cpuSubmarineCount === 3) {
-    infoDisplay.innerHTML = 'You sunk the computers Submarine'
+    infoDisplay.innerHTML = `${enemy} sunk you Submarine`
         cpuSubmarineCount = 10
     }
     if (cpuCruiserCount === 3) {
-        infoDisplay.innerHTML = 'You sunk the computers Cruiser'
+        infoDisplay.innerHTML = `${enemy} sunk you Cruiser`
         cpuCruiserCount = 10
     }
     if (cpuBattleshipCount === 4) {
-        infoDisplay.innerHTML = 'You sunk the computers Battleship'
+        infoDisplay.innerHTML = `${enemy} sunk you Battleship`
         cpuBattleshipCount = 10
     }
     if (cpuCarrierCount === 5) {
-        infoDisplay.innerHTML = 'You sunk the computers Carrier'
+        infoDisplay.innerHTML = `${enemy} sunk you Carrier`
         cpuCarrierCount = 10
     }
     if ((destroyerCount + submarineCount + cruiserCount + battleshipCount + carrierCount) === 50) {
@@ -435,7 +437,7 @@ function checkForWins() {
         gameOver()
     }
     if ((cpuDestroyerCount + cpuSubmarineCount + cpuCruiserCount + cpuBattleshipCount + cpuCarrierCount) === 50) {
-        infoDisplay.innerHTML = "COMPUTER WINS"
+        infoDisplay.innerHTML = `${enemy.toUpperCase} WINS`
         gameOver()
     }
 }

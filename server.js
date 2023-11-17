@@ -80,10 +80,10 @@ socket.on('fire-reply', square => {
     socket.broadcast.emit('fire-reply', square)
 })
 
-//   // Timeout connection
-// setTimeout(() => {
-//     connections[playerIndex] = null
-//     socket.emit('timeout')
-//     socket.disconnect()
-//   }, 600000) // 10 minute limit per player
+// Timeout connection
+setTimeout(() => {
+    connection[playerIndex] = null
+    socket.emit('timeout')
+    socket.disconnect()
+  }, 600000) // 10 minute limit per player
 })
