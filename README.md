@@ -26,4 +26,4 @@
    "dev": "nodemon server"
 
 # Run game (locally)
-1. npm run dev
+1. "npm run dev" in terminal
