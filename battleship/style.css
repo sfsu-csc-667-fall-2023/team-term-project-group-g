@@ -191,6 +191,7 @@ body {
 
 .chat-window {
   border-top: 5px solid hsla(0, 0%, 19%, 0.2);
+  height: 265px;
 }
 
 #chat-content {
@@ -198,8 +199,10 @@ body {
   width: 100px;
 }
 
-.chat-box #chat-bottom {
-  /* Have yet to figure out how to put the input & button at the bottom of the box thus far*/
+#chat-bottom {
+  width: 100px;
+  margin: 5px;
+  text-align: center;
 }
 
 #chatmsg {
