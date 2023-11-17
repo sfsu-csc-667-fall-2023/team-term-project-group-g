@@ -61,6 +61,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  text-align: center;
 }
 
 .battleship-grid {
@@ -174,6 +175,47 @@ body {
 
 .battleship-grid div {
   border: 1px solid hsla(0, 0%, 100%, .2);
+}
+
+.chat-box {
+  margin: 2vmin;
+  border: 5px solid hsla(0, 0%, 19%, 0.2);
+  width: 120px;
+  height: 350px;
+}
+
+.chat-box p#name{
+  margin: 0;
+  background-color: hsl(200, 100%, 50%);
+}
+
+.chat-window {
+  border-top: 5px solid hsla(0, 0%, 19%, 0.2);
+}
+
+#chat-content {
+  margin: 5px;
+  width: 100px;
+}
+
+.chat-box #chat-bottom {
+  /* Have yet to figure out how to put the input & button at the bottom of the box thus far*/
+}
+
+#chatmsg {
+  margin: 0;
+}
+
+.chat-box input {
+  background-color: hsl(0, 1%, 68%);
+  margin-top: 5px;
+  width: 100px;
+}
+
+.chat-box button {
+  background-color: hsl(200, 100%, 50%);
+  margin: 0;
+  width: 100px;
 }
 
 .destroyer-container {
