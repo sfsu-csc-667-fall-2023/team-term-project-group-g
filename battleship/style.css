@@ -191,7 +191,7 @@ body {
 
 .chat-window {
   border-top: 5px solid hsla(0, 0%, 19%, 0.2);
-  height: 265px;
+  height: 250px;
 }
 
 #chat-content {
@@ -207,6 +207,10 @@ body {
 
 #chatmsg {
   margin: 0;
+}
+
+#message {
+  width: 100px;
 }
 
 .chat-box input {
