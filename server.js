@@ -5,22 +5,8 @@ const socketio = require('socket.io');
 const PORT = process.env.PORT || 3000;
 const app = express();
 const server = http.createServer(app);
-var io = require('socket.io')(http);
+const io = socketio(server);
 const mongoose = require('mongoose');
-
-var dbUrl = 'mongodb://localhost:3000/simple-chat';
-
-mongoose.connect(dbUrl);
-
-const bodyParser = require('body-parser');
-
-var Message = mongoose.model('Message',{
-  name : String, 
-  message : String
-});
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/messages', (req, res) => {
   Message.find({}, (err, messages)=> {
@@ -38,13 +24,17 @@ app.post('/messages', (req, res) => {
   })
 })
 
-io.on('connection', () =>{
-  console.log('a user is connected')
-})
+const bodyParser = require('body-parser');
+
+var Message = mongoose.model('Message',{
+  name : String, 
+  message : String
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, "battleship")));
-
-app.use(express.static(__dirname));
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
