@@ -10,6 +10,7 @@
     </script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="app.js" charset="utf-8"></script>
+    <script src="chat.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="container">
@@ -31,12 +32,12 @@
       <div class="chat-box">
         <p id="name">Chat</p>
         <div class="chat-window">
-          <div id="chat-content">
+          <div id="messages">
           </div>
         </div>
         <div id="chat-bottom">
-          <input type="text" placeholder="Text" name="post" required>
-          <button type="submit" class="button">Send</button>
+          <textarea id = "message" class="form-control" placeholder="Message Here" name="input"></textarea>
+          <button type="send" class="button">Send</button>
         </div>
       </div>
       <div class="battleship-grid grid-computer"></div>
