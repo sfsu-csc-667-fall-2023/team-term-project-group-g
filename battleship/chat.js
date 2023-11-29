@@ -1,28 +1,22 @@
-$(() =>{
-    $("#send").click(()=>{
-      sendMessage({
-        name: $("name").val(),
-        message:$("message").val()});
-    })
-    getMessages()
-  })
+document.addEventListener('DOMContentLoaded', () => {
+    const socket = io();
+    const senderName = "Player";
   
-  function addMessages(message){
-    $("#messages").append(`
-    <h4>${message.name}</h4>
-    <p> ${message.message}</p>`)
-  }
+    // Handle sending messages
+    document.getElementById('send').addEventListener('click', () => {
+      const message = document.getElementById('enter-message').value;
+      if (message.trim() !== '') {
+        const fullMessage = `${senderName}: ${message}`;
+        socket.emit('chat-content', fullMessage);
+        document.getElementById('enter-message').value = '';
+      }
+    });
   
-  function getMessages(){
-    $.get('http://localhost:3000/messages', (data) => {
-      data.forEach(addMessages);
-    })
-  }
-  
-  function sendMessage(message){
-    $.post('http://localhost:3000/messages', message)
-  }
-  
-  var socket = io();
-  
-  socket.on('message', addMessages);
+    // Handle receiving messages
+    socket.on('chat-content', (message) => {
+      const messagesDiv = document.getElementById('messages');
+      const messageElement = document.createElement('p');
+      messageElement.textContent = message;
+      messagesDiv.appendChild(messageElement);
+    });
+  });

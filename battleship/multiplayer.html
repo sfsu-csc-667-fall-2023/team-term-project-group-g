@@ -9,8 +9,8 @@
       let gameMode = 'multiPlayer'
     </script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="app.js" charset="utf-8"></script>
-    <script src="chat.js" charset="utf-8"></script>
+    <script src="/app.js" charset="utf-8"></script>
+    <script src="/chat.js"></script>
   </head>
   <body>
     <div class="container">
@@ -31,14 +31,9 @@
       <div class="battleship-grid grid-user"></div>
       <div class="chat-box">
         <p id="name">Chat</p>
-        <div class="chat-window">
-          <div id="messages">
-          </div>
-        </div>
-        <div id="chat-bottom">
-          <textarea id = "message" class="form-control" placeholder="Message Here" name="input"></textarea>
-          <button type="send" id="send" class="button">Send</button>
-        </div>
+        <div id="messages"></div>
+        <input type="text" id = "enter-message" placeholder="Message Here">
+        <button type="send" id="send" class="button">Send</button>
       </div>
       <div class="battleship-grid grid-computer"></div>
     </div>
