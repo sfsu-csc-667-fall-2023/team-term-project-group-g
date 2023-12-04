@@ -76,6 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Multiplayer
     function startMultiPlayer() {
       const socket = io();
+
+      socket.on('player-info', ({ playerIndex, lobbyId }) => {
+        document.getElementById('lobby-info').innerText = `Lobby ID: ${lobbyId}`;
+        console.log(`You are player ${playerIndex} in lobby ${lobbyId}`);
+      });
   
       // Get your player number
       socket.on('player-number', num => {
