@@ -6,7 +6,7 @@
 |      #1      |     Alec Nagal    | anagal1@mail.sfsu.edu |    itsmeAlec    | aleccsucky/Alec Nagal(nickname) |
 |    #2        |   Douglas Cheung  |   dcheung5@sfsu.edu   | NicholasRFrintz |       NicholasRFrintz           |
 |    #3        |Vijayraj Tolnoorkar| vtolnoorkar@sfsu.edu  |    vijayt2001   | vj838/ Vijayraj Tolnoorkar      |
-|    #4        |    Lajja Shah     |  lshah@mail.sfsu,edu  |    sl1908       |         dukebix                 |
+|    #4        |    Lajja Shah     |  lshah@mail.sfsu.edu  |    sl1908       |         dukebix                 |
 
 
 |             Name of the Project               |                            URL of the Project                          | 
