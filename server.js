@@ -63,6 +63,8 @@ io.on('connection', (socket) => {
     } else {
       socket.request.session.lobbyId = null;
       socket.request.session.save();
+
+      socket.emit('lobby-full');
     }
   }
 
