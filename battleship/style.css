@@ -180,7 +180,7 @@ body {
 .chat-box {
   margin: 2vmin;
   border: 5px solid hsla(0, 0%, 19%, 0.2);
-  width: 120px;
+  min-width: 120px;
   height: 350px;
 }
 
@@ -341,18 +341,21 @@ body {
   }
 }
 
-.player {
+.player1, .player2 {
   margin: 2vmin;
 }
 
-.connected, .ready {
+.connected-p1, .connected-p2, .ready-p1, .ready-p2 {
   font-weight: normal;
   opacity: .25;
   text-decoration: line-through;
 }
 
-.connected.active,
-.ready.active {
+.connected-p1.active,
+.ready-p1.active,
+.connected-p2.active,
+.ready-p2.active {
+  font-weight: bold;
   opacity: 1;
   text-decoration: none;
 }

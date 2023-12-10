@@ -19,11 +19,13 @@ const sessionMiddleware = session({
 
 app.use(sessionMiddleware);
 
+app.use(express.static('public'));
+
 app.use(express.static(path.join(__dirname, 'battleship')));
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const lobbies = {};
+let lobbies = {};
 let nextLobbyId = 1; // Start with lobby ID 1
 
 io.use((socket, next) => {
@@ -33,7 +35,7 @@ io.use((socket, next) => {
 io.on('connection', (socket) => {
   let playerIndex = null;
   const session = socket.request.session;
-  const lobbyId = session ? session.lobbyId : null;
+  lobbyId = session ? session.lobbyId : null;
 
   if (session && lobbyId && lobbies[lobbyId]) {
     const existingPlayerIndex = lobbies[lobbyId].findIndex((s) => s.request.sessionID === socket.request.sessionID);
@@ -50,7 +52,7 @@ io.on('connection', (socket) => {
   }
 
   if (lobbyId && lobbies[lobbyId]) {
-    const playerIndex = lobbies[lobbyId].indexOf(null);
+    playerIndex = lobbies[lobbyId].indexOf(null);
 
     if (playerIndex !== -1) {
       lobbies[lobbyId][playerIndex] = socket;
@@ -67,40 +69,50 @@ io.on('connection', (socket) => {
   }
 
   socket.on('create-lobby', () => {
-    const lobbyId = nextLobbyId++;
-    lobbies[lobbyId] = [null, null]; // Initially, no players in the lobby
+    lobbyId = nextLobbyId++;
+    lobbies[lobbyId] = {
+      players: [null, null], // Initially, no players in the lobby
+      currentPlayer: 0, // Set the initial current player for the lobby
+    };
     socket.join(lobbyId);
-
+  
     // Save the lobby ID to the session
     socket.request.session.lobbyId = lobbyId;
     socket.request.session.save();
-
+  
     socket.emit('created-lobby', { playerIndex: 0, lobbyId });
     io.emit('lobbies-list', getLobbiesList());
   });
 
   socket.on('join-lobby', (selectedLobbyId) => {
     if (lobbies[selectedLobbyId]) {
-      const playerIndex = lobbies[selectedLobbyId].indexOf(null);
+      playerIndex = lobbies[selectedLobbyId].players.indexOf(null);
+      lobbies[selectedLobbyId].currentPlayer = playerIndex;
   
       if (playerIndex !== -1) {
-        lobbies[selectedLobbyId][playerIndex] = socket;
+        // Update the playerRole based on the playerIndex
+        const playerRole = playerIndex === 0 ? 'user' : 'enemy';
+
+        lobbies[selectedLobbyId].players[playerIndex] = socket;
         socket.join(selectedLobbyId);
   
         // Save the lobby ID to the session
         socket.request.session.lobbyId = selectedLobbyId;
+        socket.request.session.playerRole = playerRole;
         socket.request.session.save();
   
-        socket.emit('player-info', { playerIndex, lobbyId: selectedLobbyId });
+        socket.emit('player-info', { playerIndex, lobbyId: selectedLobbyId, playerRole });
         io.to(selectedLobbyId).emit('player-connection', { playerIndex, lobbyId: selectedLobbyId });
   
-        console.log(`Player ${playerIndex} joined lobby ${selectedLobbyId}`);
+        
+      console.log(`Player ${parseInt(playerIndex)+1} joined lobby ${selectedLobbyId} as ${playerRole}`);
         
         // Emit the updated lobbies list to all clients
         io.emit('lobbies-list', getLobbiesList());
       } else {
         // Lobby is full or in an invalid state, clear the session data
         socket.request.session.lobbyId = null;
+        socket.request.session.playerRole = null;
         socket.request.session.save();
   
         socket.emit('lobby-full');
@@ -112,23 +124,12 @@ io.on('connection', (socket) => {
 
   // Handle the request for the list of existing lobbies
   socket.on('request-lobbies', () => {
-    const lobbiesList = getLobbiesList();
+    lobbiesList = getLobbiesList();
     socket.emit('lobbies-list', lobbiesList);
   });
 
-  // Handle the 'Create Lobby' event
-  socket.on('create-lobby', () => {
-    const lobbyId = nextLobbyId++;
-    lobbies[lobbyId] = [null, null]; // Assuming the creator joins as the first player
-    socket.join(lobbyId);
-
-    socket.emit('created-lobby', { playerIndex: 0, lobbyId });
-    io.emit('lobbies-list', getLobbiesList());
-  });
-
   socket.on('disconnect', () => {
-    // ... existing disconnect logic
-    if (playerIndex !== null && lobbies[lobbyId][playerIndex] !== null) {
+    if (lobbyId && lobbies[lobbyId] && playerIndex !== null && lobbies[lobbyId][playerIndex] !== null) {
       console.log(`Player ${playerIndex} in lobby ${lobbyId} disconnected`);
       lobbies[lobbyId][playerIndex] = null;
       socket.broadcast.emit('player-connection', { playerIndex, lobbyId });
@@ -161,7 +162,7 @@ io.on('connection', (socket) => {
     socket.emit('check-players', players);
   });
 
-  socket.on('chat-content', (message) => {
+  socket.on('chat-content', ({ message, lobbyId }) => {
     io.to(lobbyId).emit('chat-content', message);
   });
 
@@ -177,14 +178,22 @@ io.on('connection', (socket) => {
   
   function getLobbiesList() {
     return Object.keys(lobbies).map((lobbyId) => {
-      const playersCount = lobbies[lobbyId].filter((player) => player !== null).length;
+      const lobby = lobbies[lobbyId];
+  
+      if (!lobby || !Array.isArray(lobby.players)) {
+        console.error(`Invalid lobby structure for lobby ${lobbyId}: ${JSON.stringify(lobby)}`);
+        return null; // or handle the error in an appropriate way
+      }
+  
+      const playersCount = lobby.players.filter((player) => player !== null).length;
       const maxPlayers = 2; // Change this based on your game's max players
+  
       return { id: lobbyId, players: playersCount, maxPlayers };
-    });
+    }).filter(lobby => lobby !== null);
   }
 
   setTimeout(() => {
-    if (lobbies[lobbyId][playerIndex] !== null) {
+    if (lobbies[lobbyId][playerIndex]) {
       console.log(`Player ${playerIndex} in lobby ${lobbyId} timed out`);
       lobbies[lobbyId][playerIndex] = null;
       socket.emit('timeout');

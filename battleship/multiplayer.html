@@ -5,15 +5,17 @@
     <title>Battle Ships</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap" rel="stylesheet">
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/server.js" charset="utf-8"></script>
+    <script src="client.js" charset="utf-8"></script>
+    <script src="app.js" charset="utf-8"></script>
     <script>
+      const socket = io();
       let gameMode = 'multiPlayer'
       socket.on('lobby-id', (lobbyId) => {
         document.getElementById('lobby-id-area').innerText = `Lobby ID: ${lobbyId}`;
       });
     </script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="app.js" charset="utf-8"></script>
-    <script src="client.js"></script>
   </head>
   <body>
     <div id="lobby">
@@ -25,27 +27,27 @@
     </div>
     <div id="game-content">
       <div class="container">
-        <div class="player p1">
+        <div class="player1">
           Player 1
-          <div class="connected">Connected</div>
-          <div class="ready">Ready</div>
+          <div class="connected-p1">Connected</div>
+          <div class="ready-p1">Ready</div>
         </div>
       
-        <div class="player p2">
+        <div class="player2">
           Player 2
-          <div class="connected">Connected</div>
-          <div class="ready">Ready</div>
+          <div class="connected-p2">Connected</div>
+          <div class="ready-p2">Ready</div>
         </div>
       </div>
 
       <div class="container">
-        <div class="battleship-grid grid-user"></div>
         <div class="chat-box">
           <p id="name">Chat</p>
           <div id="messages"></div>
           <input type="text" id = "enter-message" placeholder="Message Here">
           <button type="send" id="send" class="button">Send</button>
         </div>
+        <div class="battleship-grid grid-user"></div>
         <div class="battleship-grid grid-computer"></div>
       </div>
 
