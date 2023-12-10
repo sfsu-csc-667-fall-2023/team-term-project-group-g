@@ -1,67 +1,11 @@
 body {
-  margin: 0;
-  background-color: #F3F3F3;
-  overflow-x: hidden;
-}
-
-*, *::before, *::after {
   font-family: 'Montserrat', sans-serif;
-  box-sizing: border-box;
-}
-
-.splash-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 66vh;
-}
-
-.splash-title {
-  font-family: 'Bangers', cursive;
-  font-size: 10rem;
-}
-
-.splash-battleship-image {
-  position: absolute;
-  bottom: 5vh;
-  left: 20vw;
-  width: 100%;
-  transform: rotateY(180deg);
-  pointer-events: none;
-  opacity: .25;
-}
-
-.btn {
-  font-size: inherit;
-  background-color: hsl(30, 100%, 50%);
-  padding: .5em 1em;
-  outline: none;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: .2em;
-  color: #333;
-}
-
-.btn:hover, .btn:focus {
-  background-color: hsl(30, 100%, 40%);
-}
-
-.splash-btn {
-  font-size: 2rem;
-  margin-left: 2rem;
-}
-
-.splash-btn:first-child {
-  margin-left: 0;
 }
 
 .container {
   display: flex;
   justify-content: center;
   width: 100%;
-  text-align: center;
 }
 
 .battleship-grid {
@@ -177,62 +121,6 @@ body {
   border: 1px solid hsla(0, 0%, 100%, .2);
 }
 
-.chat-box {
-  margin: 2vmin;
-  border: 5px solid hsla(0, 0%, 19%, 0.2);
-  width: 120px;
-  height: 350px;
-}
-
-.chat-box p#name{
-  margin: 0;
-  background-color: hsl(200, 100%, 50%);
-}
-
-#messages {
-  border-top: 5px solid hsla(0, 0%, 19%, 0.2);
-  max-height: 265px;
-  overflow-y: auto;
-  margin-bottom: 5px;
-}
-
-#messages p {
-  margin: 0;
-  margin-left: 5px;
-  text-align: left;
-}
-
-#chat-content {
-  margin: 5px;
-  width: 100px;
-}
-
-#chat-bottom {
-  width: 100px;
-  margin: 5px;
-  text-align: center;
-}
-
-#chatmsg {
-  margin: 0;
-}
-
-#enter-message {
-  width: 100px;
-}
-
-.chat-box input {
-  background-color: hsl(0, 1%, 68%);
-  margin-top: 5px;
-  width: 100px;
-}
-
-.chat-box button {
-  background-color: hsl(200, 100%, 50%);
-  margin: 0;
-  width: 100px;
-}
-
 .destroyer-container {
   --width: 2;
 }
@@ -335,24 +223,22 @@ body {
   0% {
     background-color: red;
   }
-
-  100% {
-    background-color: hsl(0, 0%, 80%);
+  
+  .miss {
+     background-color: black;
   }
-}
-
-.player {
-  margin: 2vmin;
-}
 
 .connected, .ready {
   font-weight: normal;
-  opacity: .25;
-  text-decoration: line-through;
 }
 
-.connected.active,
-.ready.active {
-  opacity: 1;
-  text-decoration: none;
+.connected span, .ready span{
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background:red;
+}
+
+span.green{
+  background: green;
 }
