@@ -3,224 +3,151 @@ body {
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.battleship-grid {
-  margin: 2vmin;
-  display: grid;
-  background-color: hsl(200, 100%, 50%);
-  grid-template-rows: repeat(10, 4.6vmin);
-  grid-template-columns: repeat(10, 4.6vmin);
-}
-
-.grid-computer > .taken,
-.grid-computer > .boom {
-  background-color: hsl(200, 100%, 50%) !important;
-  border-radius: 0 !important;
-}
-
-.taken,
-.ship {
-  position: relative;
-  background-color: hsl(0, 0%, 80%);
-}
-
-.taken.start.vertical,
-.taken.start.vertical::before {
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-}
-
-.taken.end.vertical,
-.taken.end.vertical::before {
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-}
-
-.taken.start.horizontal,
-.taken.start.horizontal::before {
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
-}
-
-.taken.end.horizontal,
-.taken.end.horizontal::before {
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-}
-
-.taken.vertical::before,
-.taken.horizontal::before {
-  content: '';
-  position: absolute;
-  border: .3vmin solid white;
-  top: -1px;
-  bottom: -1px;
-  left: -1px;
-  right: -1px;
-}
-
-.taken.horizontal::before {
-  animation: ripplesY 3s linear infinite;
-  border-left: none;
-  border-right: none;
-}
-
-.taken.vertical::before {
-  animation: ripplesX 3s linear infinite;
-  border-top: none;
-  border-bottom: none;
-}
-
-@keyframes ripplesX {
-  0% {
-    opacity: 1;
-    transform: scaleX(1);
+    display: flex;
   }
-
-  100% {
-    opacity: 0;
-    transform: scaleX(1.5);
+  
+  .grid-user {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: blue;
+    margin: 20px;
   }
-}
-
-@keyframes ripplesY {
-  0% {
-    opacity: 1;
-    transform: scaleY(1);
+  
+  .grid div {
+    width: 40px;
+    height: 40px;
   }
-
-  100% {
-    opacity: 0;
-    transform: scaleY(1.5);
+  
+  .grid-computer {
+    width: 400px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightgreen;
+    margin: 20px;
   }
-}
-
-.grid-display {
-  display: flex;
-}
-
-.ship > div {
-  width: 4.6vmin;
-  height: 4.6vmin;
-}
-
-.ship {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 1vmin;
-  width: calc(4.6vmin * var(--width, 1));
-  height: calc(4.6vmin * var(--height, 1));
-  border-radius: 2.3vmin;
-}
-
-.battleship-grid div {
-  border: 1px solid hsla(0, 0%, 100%, .2);
-}
-
-.destroyer-container {
-  --width: 2;
-}
-
-.destroyer-container-vertical {
-  --height: 2;
-  --width: 1;
-}
-
-.submarine-container,
-.cruiser-container {
-  --width: 3;
-}
-
-.submarine-container-vertical,
-.cruiser-container-vertical {
-  --height: 3;
-  --width: 1;
-}
-
-.battleship-container {
-  --width: 4;
-}
-
-.battleship-container-vertical {
-  --height: 4;
-  --width: 1;
-}
-
-.carrier-container {
-  --width: 5;
-}
-
-.carrier-container-vertical {
-  --height: 5;
-  --width: 1;
-}
-
-.hidden-info {
-  font-size: 1.5rem;
-  align-items: center;
-  flex-direction: column;
-}
-
-.info-text {
-  margin: 1rem;
-}
-
-.miss,
-.boom {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.boom::after,
-.miss::after {
-  content: '';
-  position: absolute;
-  border-radius: 100%;
-  width: 2vmin;
-  height: 2vmin;
-}
-
-.miss::after {
-  background-color: white;
-}
-
-.boom::after {
-  background-color: red;
-}
-
-.miss::before {
-  content: '';
-  position: absolute;
-  animation: hit .2s ease-out forwards;
-  border: 1vmin solid white;
-  border-radius: 100%;
-  width: 2vmin;
-  height: 2vmin;
-}
-
-.boom {
-  animation: boom .2s ease-out forwards;
-}
-
-@keyframes hit {
-  0% {
-    opacity: 1;
-    transform: scale(0);
+  
+  .grid-display {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    background-color: yellow;
   }
-
-  100% {
-    opacity: 0;
-    transform: scale(4);
+  
+  .destroyer-container {
+    width: 80px;
+    height: 40px;
+    background-color: orange;
+    margin: 10px;
+    display: flex;
   }
-}
-
-@keyframes boom {
-  0% {
+  .destroyer-container-vertical {
+    width: 40px;
+    height: 80px;
+    background-color: orange;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .submarine-container {
+    width: 120px;
+    height: 40px;
+    background-color: pink;
+    margin: 10px;
+    display: flex;
+  }
+  
+  .submarine-container-vertical {
+    width: 40px;
+    height: 120px;
+    background-color: pink;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .cruiser-container {
+    width: 120px;
+    height: 40px;
+    background-color: purple;
+    margin: 10px;
+    display: flex;
+  }
+  
+  .cruiser-container-vertical {
+    width: 40px;
+    height: 120px;
+    background-color: purple;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .battleship-container {
+    width: 160px;
+    height: 40px;
+    background-color: aqua;
+    margin: 10px;
+    display: flex;
+  }
+  
+  .battleship-container-vertical {
+    width: 40px;
+    height: 160px;
+    background-color: aqua;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+  .carrier-container {
+    width: 200px;
+    height: 40px;
+    background-color: green;
+    margin: 10px;
+    display: flex;
+  }
+  
+  .carrier-container-vertical {
+    width: 40px;
+    height: 200px;
+    background-color: green;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  
+  .ship div {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .destroyer {
+    background-color: orange;
+  }
+  
+  .submarine {
+    background-color: pink;
+  }
+  
+  .cruiser {
+    background-color: purple;
+  }
+  
+  .battleship {
+    background-color: aqua;
+  }
+  
+  .carrier {
+    background-color: green;
+  }
+  
+  .boom {
     background-color: red;
   }
   
