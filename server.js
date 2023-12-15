@@ -29,7 +29,7 @@ io.on('connection', socket => {
     let roomState = roomStates.get(room);
     roomState[playerIndex] = { connected: true, ready: false };
 
-    console.log(`Player ${playerIndex} has connected to room ${room}`);
+    console.log(`Player ${playerIndex} has connected to ${room}`);
 
     socket.on('disconnect', () => {
         let roomStateOnDisconnect = roomStates.get(socket.room);
@@ -49,7 +49,7 @@ io.on('connection', socket => {
     });
 
     socket.on('chat-content', ({ message, lobbyId }) => {
-        io.to(lobbyId).emit('chat-content', message);
+        io.to(room).emit('chat-content', message);
     });
 
     socket.on('fire', id => {
