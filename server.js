@@ -48,6 +48,10 @@ io.on('connection', socket => {
         socket.emit('check-players', roomState);
     });
 
+    socket.on('chat-content', ({ message, lobbyId }) => {
+        io.to(lobbyId).emit('chat-content', message);
+    });
+
     socket.on('fire', id => {
         socket.to(room).emit('fire', id);
     });
