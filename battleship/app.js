@@ -136,6 +136,27 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
 
+    
+    // Handle sending messages
+    document.getElementById('send').addEventListener('click', () => {
+      const message = document.getElementById('enter-message').value;
+      if (message.trim() !== '') {
+        const senderName = `Player`; // Update senderName accordingly
+        const fullMessage = `${senderName}: ${message}`;
+        socket.emit('chat-content', { message: fullMessage}); // Send lobbyId along with the message
+        document.getElementById('enter-message').value = '';
+      }
+    });
+
+    // Handle receiving messages
+    socket.on('chat-content', (message) => {
+      const senderName = `Player`; // Update senderName accordingly
+      const messagesDiv = document.getElementById('messages');
+      const messageElement = document.createElement('p');
+      messageElement.textContent = message;
+      messagesDiv.appendChild(messageElement);
+    });
+
     // On Fire Received
     socket.on('fire', id => {
       enemyGo(id)
@@ -157,25 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Handle sending messages
-  document.getElementById('send').addEventListener('click', () => {
-    const message = document.getElementById('enter-message').value;
-    if (message.trim() !== '') {
-      const senderName = `Player (Lobby ${lobbyId})`; // Update senderName accordingly
-      const fullMessage = `${senderName}: ${message}`;
-      socket.emit('chat-content', { message: fullMessage, lobbyId }); // Send lobbyId along with the message
-      document.getElementById('enter-message').value = '';
-    }
-  });
-
-  // Handle receiving messages
-  socket.on('chat-content', (message) => {
-    const senderName = `Player (Lobby ${lobbyId})`; // Update senderName accordingly
-    const messagesDiv = document.getElementById('messages');
-    const messageElement = document.createElement('p');
-    messageElement.textContent = message;
-    messagesDiv.appendChild(messageElement);
-  });
 
   // Single Player
   function startSinglePlayer() {
