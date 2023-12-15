@@ -299,3 +299,59 @@ body {
   opacity: 1;
   text-decoration: none;
 }
+
+.chat-box {
+  margin: 2vmin;
+  border: 5px solid hsla(0, 0%, 19%, 0.2);
+  min-width: 120px;
+  height: 350px;
+}
+
+.chat-box p#name{
+  margin: 0;
+  background-color: hsl(200, 100%, 50%);
+}
+
+#messages {
+  border-top: 5px solid hsla(0, 0%, 19%, 0.2);
+  max-height: 265px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+}
+
+#messages p {
+  margin: 0;
+  margin-left: 5px;
+  text-align: left;
+}
+
+#chat-content {
+  margin: 5px;
+  width: 100px;
+}
+
+#chat-bottom {
+  width: 100px;
+  margin: 5px;
+  text-align: center;
+}
+
+#chatmsg {
+  margin: 0;
+}
+
+#enter-message {
+  width: 100px;
+}
+
+.chat-box input {
+  background-color: hsl(0, 1%, 68%);
+  margin-top: 5px;
+  width: 100px;
+}
+
+.chat-box button {
+  background-color: hsl(200, 100%, 50%);
+  margin: 0;
+  width: 100px;
+}
