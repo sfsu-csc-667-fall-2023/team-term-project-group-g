@@ -27,3 +27,25 @@
 
 # Run game (locally)
 1. "npm run dev" in terminal
+
+# Postgres Database Setup
+1.	Open a terminal or command prompt.
+2.	Log in as the default PostgreSQL user (postgres):
+Command: psql -U postgres -d postgres
+3.	Create a new user (battleship) with a password (password) and the ability to create databases:
+Command: CREATE USER battleship WITH PASSWORD 'password' CREATEDB;
+4.	Check if the battleship role was successfully created:
+Command: /du
+5.	Quit the PostgreSQL prompt:
+Command: \q
+6.	Log in as the newly created user (battleship):
+Command: psql -U battleship -d postgres
+7.	Create a new database (logindb):
+Command: CREATE DATABASE logindb;
+8.	Check if the logindb database was successfully created:
+Command: \l
+9.	Connect to the logindb database:
+Command: \c logindb
+
+
+
