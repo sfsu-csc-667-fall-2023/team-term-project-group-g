@@ -31,9 +31,19 @@ https://youtu.be/8lR6e0vQUdc?si=q-5T1hlJ7Ut9zlnE
    npm install mongoose@8.0.3
    npm install session-memory-store@1.0.0
    npm install socket.io@4.7.2
+   npm i express
+   npm i dotenv pg
+   npm i ejs
+   npm i bcrypt
+   npm i express-session express-flash
+   npm i passport passport-local
 
 
-4. make sure in package.json
+
+
+
+
+5. make sure in package.json
    "main": "server.js"
    "scripts": {
        "start": "node server",
