@@ -43,6 +43,10 @@
         "nodemon": "^3.0.2"
   }
 
+<img width="779" alt="dbInstruction" src="https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-g/assets/62590408/faa30e41-4be4-42e3-baf5-dd0faf7aaf79">
+
+
+
 # Run game (locally)
 1. "npm run dev" in terminal
 2. open two tabs for multiplayer.
