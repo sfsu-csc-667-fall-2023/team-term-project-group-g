@@ -1,10 +1,9 @@
-body {
+.body {
   margin: 0;
-  background-color: #F3F3F3;
   overflow-x: hidden;
 }
 
-*, *::before, *::after {
+ ::before, *::after {
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
 }
@@ -26,26 +25,43 @@ body {
   position: absolute;
   bottom: 5vh;
   left: 20vw;
-  width: 100%;
+  width: 50%;
   transform: rotateY(180deg);
   pointer-events: none;
-  opacity: .25;
+  opacity: .5;
+  animation: moveBoat 20s linear infinite;
+  filter: hue-rotate(0deg); /* Set the color to red */
 }
+
+@keyframes moveBoat {
+  0% {
+    left: 20vw;
+  }
+
+  50% {
+    left: calc(100vw - 20vw);
+  }
+
+  100% {
+    left: 20vw;
+  }
+}
+
 
 .btn {
   font-size: inherit;
-  background-color: hsl(30, 100%, 50%);
+  background-color: hsl(0, 0%, 100%);;
   padding: .5em 1em;
   outline: none;
   border: none;
   text-decoration: none;
   cursor: pointer;
   border-radius: .2em;
-  color: #333;
+  color: #000000;
 }
 
 .btn:hover, .btn:focus {
-  background-color: hsl(30, 100%, 40%);
+  background-color: hsl(128, 100%, 50%);
 }
 
 .splash-btn {
@@ -61,6 +77,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  text-align: center;
 }
 
 .battleship-grid {
@@ -174,6 +191,62 @@ body {
 
 .battleship-grid div {
   border: 1px solid hsla(0, 0%, 100%, .2);
+}
+
+.chat-box {
+  margin: 2vmin;
+  border: 5px solid hsla(0, 0%, 19%, 0.2);
+  width: 120px;
+  height: 350px;
+}
+
+.chat-box p#name{
+  margin: 0;
+  background-color: hsl(200, 100%, 50%);
+}
+
+#messages {
+  border-top: 5px solid hsla(0, 0%, 19%, 0.2);
+  max-height: 265px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+}
+
+#messages p {
+  margin: 0;
+  margin-left: 5px;
+  text-align: left;
+}
+
+#chat-content {
+  margin: 5px;
+  width: 100px;
+}
+
+#chat-bottom {
+  width: 100px;
+  margin: 5px;
+  text-align: center;
+}
+
+#chatmsg {
+  margin: 0;
+}
+
+#enter-message {
+  width: 100px;
+}
+
+.chat-box input {
+  background-color: hsl(0, 1%, 68%);
+  margin-top: 5px;
+  width: 100px;
+}
+
+.chat-box button {
+  background-color: hsl(200, 100%, 50%);
+  margin: 0;
+  width: 100px;
 }
 
 .destroyer-container {
@@ -298,60 +371,4 @@ body {
 .ready.active {
   opacity: 1;
   text-decoration: none;
-}
-
-.chat-box {
-  margin: 2vmin;
-  border: 5px solid hsla(0, 0%, 19%, 0.2);
-  min-width: 120px;
-  height: 350px;
-}
-
-.chat-box p#name{
-  margin: 0;
-  background-color: hsl(200, 100%, 50%);
-}
-
-#messages {
-  border-top: 5px solid hsla(0, 0%, 19%, 0.2);
-  max-height: 265px;
-  overflow-y: auto;
-  margin-bottom: 5px;
-}
-
-#messages p {
-  margin: 0;
-  margin-left: 5px;
-  text-align: left;
-}
-
-#chat-content {
-  margin: 5px;
-  width: 100px;
-}
-
-#chat-bottom {
-  width: 100px;
-  margin: 5px;
-  text-align: center;
-}
-
-#chatmsg {
-  margin: 0;
-}
-
-#enter-message {
-  width: 100px;
-}
-
-.chat-box input {
-  background-color: hsl(0, 1%, 68%);
-  margin-top: 5px;
-  width: 100px;
-}
-
-.chat-box button {
-  background-color: hsl(200, 100%, 50%);
-  margin: 0;
-  width: 100px;
 }

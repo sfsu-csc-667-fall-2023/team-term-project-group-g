@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #00e5ff;
+      overflow-x: hidden;
+    }
+
+    ::before,
+    *::after {
+      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
+    }
+
+    .splash-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 66vh;
+    }
+
+    .splash-title {
+      font-family: 'Bangers', cursive;
+      font-size: 10rem;
+    }
+
+    .splash-battleship-image {
+      position: absolute;
+      bottom: 5vh;
+      left: 20vw;
+      width: 50%;
+      transform: rotateY(180deg);
+      pointer-events: none;
+      opacity: .5;
+      animation: moveBoat 20s linear infinite;
+      filter: hue-rotate(0deg); /* Set the color to red */
+    }
+
+    @keyframes moveBoat {
+      0% {
+        left: 20vw;
+      }
+
+      50% {
+        left: calc(100vw - 20vw);
+      }
+
+      100% {
+        left: 20vw;
+      }
+    }
+
+    .btn {
+      font-size: inherit;
+      background-color: hsl(180, 100%, 50%);
+      padding: .5em 1em;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: .2em;
+      color: #333;
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background-color: hsl(180, 100%, 40%);
+    }
+
+    .splash-btn {
+      font-size: 2rem;
+      margin-left: 2rem;
+    }
+
+    .splash-btn:first-child {
+      margin-left: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+    }
+
+    h4 {
+      text-align: center;
+      color: rgb(255, 149, 0); /* Set the color to red */
+      margin-top: 2.5em;
+      font-size: 2rem; /* Increase the font size */
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="splash-container">
+    <h1 class="splash-title">Battleship</h1>
+    <div>
+      <a href="/singleplayer" class="btn">Single Player</a>
+      <a href="/multiplayer" class="btn">Multiplayer</a>
+      <a href="/users/logout" class="btn">Logout</a>
+      <h4>Welcome <%= user %></h4>
+    </div>
+  </div>
+  <img src="/images/battleship-large.svg" class="splash-battleship-image">
+</body>
+
+</html>
