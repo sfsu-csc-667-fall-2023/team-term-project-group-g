@@ -43,7 +43,7 @@
         "nodemon": "^3.0.2"
   }
 
-<img width="779" alt="dbInstruction" src="https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-g/assets/62590408/faa30e41-4be4-42e3-baf5-dd0faf7aaf79">
+
 
 
 
@@ -70,6 +70,10 @@ Command: \l
 9.	Connect to the logindb database:
 Command: \c logindb
 10. Make sure env. file
+
+**Database setup reference:**
+<img width="779" alt="dbInstruction" src="https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-g/assets/62590408/faa30e41-4be4-42e3-baf5-dd0faf7aaf79">
+![image](https://github.com/sfsu-csc-667-fall-2023/team-term-project-group-g/assets/62590408/f5235b9b-3e15-4736-b1df-249b66f47f4b)
 
 
 
