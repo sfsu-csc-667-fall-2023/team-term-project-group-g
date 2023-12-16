@@ -4,7 +4,7 @@
 # Presentation Video:
 https://youtu.be/8lR6e0vQUdc?si=q-5T1hlJ7Ut9zlnE
 
-**Please Note: Some of our game functionalities were facing conflicts when we implemented the authentication for Login and signup, so we decided not to include login authentication in our main branch. But we have the codebase with both authentication and game in the branch called "Login auth and game". 
+**Please Note: Some of our game functionalities were facing conflicts when we implemented the authentication for Login and signup, so we decided not to include login authentication in our main branch. But we have the codebase with both authentication and game in the branch called "Login auth and game"
 **
 
 | Student      | Student Full Name |  Student SFSU Email   | GitHub Username |        Discord Username         |
